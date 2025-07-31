@@ -23,470 +23,521 @@
 
   <style>
     :root {
-      --bg-primary: #ffffff;
-      --bg-secondary: #f8fafc;
-      --bg-tertiary: #f1f5f9;
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-tertiary: #94a3b8;
-      --border-light: #e2e8f0;
-      --border-medium: #cbd5e1;
-      --accent: #6366f1;
-      --accent-light: #a5b4fc;
-      --accent-dark: #4f46e5;
-      --success: #10b981;
-      --success-light: #34d399;
-      --warning: #f59e0b;
-      --warning-light: #fbbf24;
-      --danger: #ef4444;
-      --danger-light: #f87171;
-      --purple: #8b5cf6;
-      --blue: #3b82f6;
-      --emerald: #10b981;
-      --orange: #f97316;
-      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-      --shadow-colored: 0 4px 6px -1px rgb(99 102 241 / 0.1), 0 2px 4px -2px rgb(99 102 241 / 0.1);
-      --radius: 8px;
-      --radius-lg: 12px;
-    }
+  /* שינוי קל בצבעים כדי ליצור מראה יוקרתי יותר */
+  --bg-primary: #ffffff; /* נשאר לבן נקי */
+  --bg-secondary: #f0f4f8; /* אפור בהיר מאוד, יותר נעים */
+  --bg-tertiary: #e2e8f0; /* אפור בינוני בהיר */
+  
+  --text-primary: #1a202c; /* כהה יותר, רציני יותר */
+  --text-secondary: #4a5568; /* אפור כהה יותר */
+  --text-tertiary: #a0aec0; /* אפור עדין */
+  
+  --border-light: #edf2f7; /* גבולות בהירים ועדינים */
+  --border-medium: #cbd5e0; /* גבולות מודגשים יותר */
+  
+  --accent: #4c51bf; /* סגול-כחול עמוק יותר */
+  --accent-light: #7f84e8;
+  --accent-dark: #373b8a;
+  
+  --success: #0d9488; /* ירוק-טורקיז עמוק יותר */
+  --success-light: #2dd4bf;
+  --warning: #d97706; /* כתום חזק יותר */
+  --warning-light: #fbbf24;
+  --danger: #dc2626; /* אדום חזק יותר */
+  --danger-light: #f87171;
+  
+  --purple: #6b46c1; /* סגול עמוק יותר */
+  --blue: #3b82f6;
+  --emerald: #059669;
+  --orange: #ea580c;
+  
+  /* שינוי צלליות למראה רך ועמוק יותר */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 12px 25px rgba(0, 0, 0, 0.15), 0 6px 10px rgba(0, 0, 0, 0.08);
+  --shadow-colored: 0 6px 15px rgba(76, 81, 191, 0.2), 0 2px 5px rgba(76, 81, 191, 0.1);
+  
+  --radius: 10px; /* פינות מעוגלות יותר, תחושה מודרנית */
+  --radius-lg: 16px; /* פינות מעוגלות יותר בכרטיסים גדולים */
+}
 
-    * {
-      box-sizing: border-box;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      background-attachment: fixed;
-      color: var(--text-primary);
-      line-height: 1.5;
-      padding-top: env(safe-area-inset-top);
-      padding-bottom: env(safe-area-inset-bottom);
-      min-height: 100vh;
-    }
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* רקע: נשנה לגרדיאנט עדין יותר של אפור-כחול, או נשתמש בצבע אחיד אם רוצים סולידיות מירבית */
+  background: linear-gradient(135deg, #e0e7ff 0%, #c3dafe 100%); /* גרדיאנט בהיר ורך */
+  /* אפשרות נוספת לרקע סולידי ורציני: background-color: var(--bg-secondary); */
+  background-attachment: fixed;
+  color: var(--text-primary);
+  line-height: 1.6; /* הגדלה קלה לשיפור קריאות */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  min-height: 100vh;
+}
 
-    .header {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-light);
-      padding: 32px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: var(--shadow-sm);
-    }
+.container {
+  max-width: 1000px; /* צמצום קל לריכוז התוכן */
+  margin: 0 auto;
+  padding: 0 24px;
+}
 
-    .header h1 {
-      font-size: 28px;
-      font-weight: 700;
-      margin: 0 0 6px 0;
-      background: linear-gradient(135deg, var(--accent), var(--purple));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+.header {
+  background: rgba(255, 255, 255, 0.98); /* כמעט אטום למראה יוקרתי יותר */
+  backdrop-filter: blur(30px); /* הגדלת טשטוש */
+  border-bottom: 1px solid var(--border-light);
+  padding: 28px 0; /* הקטנה קלה למראה הדוק יותר */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
 
-    .header p {
-      font-size: 15px;
-      color: var(--text-secondary);
-      margin: 0;
-      font-weight: 500;
-    }
+.header h1 {
+  font-size: 30px; /* גודל אופטימלי */
+  font-weight: 800; /* הדגשה חזקה */
+  margin: 0 0 4px 0; /* צמצום מרווח תחתון */
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
-    .section {
-      margin-bottom: 32px;
-    }
+.header p {
+  font-size: 14px; /* הקטנה קלה, אבל ברורה */
+  color: var(--text-secondary);
+  margin: 0;
+  font-weight: 500;
+}
 
-    .card {
-      background: var(--bg-primary);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-md);
-      transition: all 0.3s ease;
-      overflow: hidden;
-    }
+.section {
+  margin-bottom: 32px; /* שמירה על מרווחים נקיים */
+}
 
-    .card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-    }
+.card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md); /* צללית מודגשת אך רכה */
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
 
-    .card-header {
-      padding: 24px 24px 0;
-      border-bottom: none;
-    }
+.card:hover {
+  transform: translateY(-3px); /* אפקט הובר בולט יותר */
+  box-shadow: var(--shadow-lg); /* צללית גדולה יותר בהובר */
+}
 
-    .card-body {
-      padding: 24px;
-    }
+.card-header {
+  padding: 24px 24px 0; /* שמירה על מרווחים */
+  border-bottom: none;
+}
 
-    .card-title {
-      font-size: 18px;
-      font-weight: 600;
-      margin: 0;
-      color: var(--text-primary);
-    }
+.card-body {
+  padding: 24px;
+}
 
-    .grid {
-      display: grid;
-      gap: 20px;
-    }
+.card-title {
+  font-size: 20px; /* הגדלה קלה לכותרות המשנה */
+  font-weight: 700; /* הדגשה */
+  margin: 0;
+  color: var(--text-primary);
+}
 
-    .grid-2 { grid-template-columns: 1fr 1fr; }
-    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid {
+  display: grid;
+  gap: 20px;
+}
 
-    @media (max-width: 768px) {
-      .grid-2 { grid-template-columns: 1fr; }
-      .grid-4 { grid-template-columns: repeat(2, 1fr); }
-      .container { padding: 0 16px; }
-      .section { margin-bottom: 24px; }
-    }
+.grid-2 { grid-template-columns: 1fr 1fr; }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 24px;
-      border: 1px solid transparent;
-      border-radius: var(--radius);
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-decoration: none;
-      white-space: nowrap;
-    }
+@media (max-width: 768px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); } /* 2 עמודות במובייל עבור סטטיסטיקות */
+  .container { padding: 0 16px; }
+  .section { margin-bottom: 24px; }
+  
+  .header h1 {
+    font-size: 26px; /* גודל מותאם למובייל */
+  }
+}
 
-    .btn:focus {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
-    }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px; /* הגדלת פאדינג לכפתורים נוחים יותר למגע */
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  font-size: 15px; /* הגדלת פונט */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: white;
-      border-color: var(--accent);
-      box-shadow: var(--shadow-colored);
-    }
+.btn:focus {
+  outline: 3px solid var(--accent-light); /* הדגשת פוקוס ברורה יותר */
+  outline-offset: 2px;
+}
 
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 25px -5px rgb(99 102 241 / 0.4);
-    }
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color: white;
+  border-color: var(--accent);
+  box-shadow: var(--shadow-colored);
+}
 
-    .btn-secondary {
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      border-color: var(--border-medium);
-    }
+.btn-primary:hover {
+  transform: translateY(-2px); /* אפקט הובר בולט יותר */
+  box-shadow: 0 10px 30px rgba(76, 81, 191, 0.3); /* צללית מוגברת בהובר */
+}
 
-    .btn-secondary:hover {
-      background: var(--bg-secondary);
-      transform: translateY(-1px);
-    }
+.btn-secondary {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+}
 
-    .btn-danger {
-      background: linear-gradient(135deg, var(--danger), #dc2626);
-      color: white;
-      border-color: var(--danger);
-    }
+.btn-secondary:hover {
+  background: var(--bg-secondary);
+  transform: translateY(-1px);
+}
 
-    .btn-danger:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 25px -5px rgb(239 68 68 / 0.4);
-    }
+.btn-danger {
+  background: linear-gradient(135deg, var(--danger), #b91c1c); /* אדום עמוק יותר */
+  color: white;
+  border-color: var(--danger);
+}
 
-    .btn-icon {
-      padding: 12px;
-      min-width: 44px;
-    }
+.btn-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+}
 
-    .input {
-      width: 100%;
-      padding: 14px 18px;
-      border: 2px solid var(--border-medium);
-      border-radius: var(--radius);
-      font-size: 15px;
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      transition: all 0.2s ease;
-    }
+.btn-icon {
+  padding: 12px;
+  min-width: 48px; /* גודל אחיד לאייקונים */
+  height: 48px;
+}
 
-    .input:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgb(99 102 241 / 0.1);
-    }
+.input {
+  width: 100%;
+  padding: 16px 20px; /* הגדלת פאדינג לשדות קלט נוחים יותר */
+  border: 2px solid var(--border-medium);
+  border-radius: var(--radius);
+  font-size: 16px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
 
-    .input::placeholder {
-      color: var(--text-tertiary);
-    }
+.input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(76, 81, 191, 0.15); /* צללית פוקוס בולטת יותר */
+}
 
-    .task-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-lg);
-      background: var(--bg-primary);
-      transition: all 0.2s ease;
-      position: relative;
-      overflow: hidden;
-    }
+.input::placeholder {
+  color: var(--text-tertiary);
+}
 
-    .task-item::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background: linear-gradient(135deg, var(--accent), var(--purple));
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px; /* הגדלת פאדינג ושינוי צדדים */
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius); /* פחות מעוגל מהכרטיס הראשי */
+  background: var(--bg-primary);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm); /* צללית קלה לכל משימה */
+}
 
-    .task-item:hover {
-      border-color: var(--accent-light);
-      box-shadow: var(--shadow-md);
-      transform: translateY(-1px);
-    }
+.task-item::before {
+  content: '';
+  position: absolute;
+  right: 0; /* שינוי כיוון הקו הצדדי לימין עבור RTL */
+  top: 0;
+  bottom: 0;
+  width: 5px; /* הגדלת עובי הקו */
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  opacity: 0;
+  transition: opacity 0.2s ease, width 0.2s ease; /* אנימציה גם לרוחב */
+}
 
-    .task-item:hover::before {
-      opacity: 1;
-    }
+.task-item:hover {
+  border-color: var(--accent-light);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px); /* אפקט הובר בולט יותר */
+}
 
-    .task-name {
-      font-weight: 500;
-      color: var(--text-primary);
-      flex: 1;
-      margin-left: 16px;
-      font-size: 15px;
-    }
+.task-item:hover::before {
+  opacity: 1;
+  width: 8px; /* הגדלת עובי הקו בהובר */
+}
 
-    .task-actions {
-      display: flex;
-      gap: 8px;
-    }
+.task-name {
+  font-weight: 500;
+  color: var(--text-primary);
+  flex: 1;
+  margin-right: 16px; /* מרווח ימינה עבור RTL */
+  font-size: 16px; /* גודל פונט קצת יותר גדול */
+}
 
-    .status-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: var(--radius);
-      border: 2px solid var(--border-medium);
-      background: var(--bg-primary);
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      position: relative;
-    }
+.task-actions {
+  display: flex;
+  gap: 10px; /* הגדלת רווח בין כפתורים */
+}
 
-    .status-btn:hover {
-      border-color: var(--accent);
-      background: var(--bg-secondary);
-      transform: scale(1.05);
-    }
+.status-btn {
+  width: 48px; /* הגדלת כפתורים למגע קל */
+  height: 48px;
+  border-radius: 50%; /* עיגול מושלם */
+  border: 2px solid var(--border-medium);
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px; /* הגדלת אייקונים */
+  position: relative;
+  box-shadow: var(--shadow-sm); /* צללית קלה לכפתורים */
+}
 
-    .status-btn.success {
-      background: linear-gradient(135deg, var(--success), var(--success-light));
-      color: white;
-      border-color: var(--success);
-      box-shadow: 0 4px 12px rgb(16 185 129 / 0.3);
-    }
+.status-btn:hover {
+  border-color: var(--accent);
+  background: var(--bg-secondary);
+  transform: scale(1.08); /* אפקט הובר בולט */
+}
 
-    .status-btn.warning {
-      background: linear-gradient(135deg, var(--warning), var(--warning-light));
-      color: white;
-      border-color: var(--warning);
-      box-shadow: 0 4px 12px rgb(245 158 11 / 0.3);
-    }
+.status-btn.success {
+  background: linear-gradient(135deg, var(--success), var(--emerald)); /* גרדיאנט חזק יותר */
+  color: white;
+  border-color: var(--success);
+  box-shadow: 0 4px 15px rgba(13, 148, 136, 0.3);
+}
 
-    .status-btn.danger {
-      background: linear-gradient(135deg, var(--danger), var(--danger-light));
-      color: white;
-      border-color: var(--danger);
-      box-shadow: 0 4px 12px rgb(239 68 68 / 0.3);
-    }
+.status-btn.warning {
+  background: linear-gradient(135deg, var(--warning), var(--orange)); /* גרדיאנט חזק יותר */
+  color: white;
+  border-color: var(--warning);
+  box-shadow: 0 4px 15px rgba(217, 119, 6, 0.3);
+}
 
-    .stat-card {
-      text-align: center;
-      padding: 28px 20px;
-      position: relative;
-      overflow: hidden;
-    }
+.status-btn.danger {
+  background: linear-gradient(135deg, var(--danger), #b91c1c); /* גרדיאנט חזק יותר */
+  color: white;
+  border-color: var(--danger);
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
 
-    .stat-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent), var(--purple));
-    }
+.stat-card {
+  text-align: center;
+  padding: 30px 20px; /* הגדלת פאדינג */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-    .stat-card:nth-child(1)::before { background: linear-gradient(90deg, var(--success), var(--emerald)); }
-    .stat-card:nth-child(2)::before { background: linear-gradient(90deg, var(--blue), var(--accent)); }
-    .stat-card:nth-child(3)::before { background: linear-gradient(90deg, var(--purple), var(--accent)); }
-    .stat-card:nth-child(4)::before { background: linear-gradient(90deg, var(--orange), var(--warning)); }
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px; /* עובי פס הדגשה */
+  background: linear-gradient(90deg, var(--accent), var(--purple));
+}
 
-    .stat-value {
-      font-size: 36px;
-      font-weight: 800;
-      margin: 12px 0 8px;
-      color: var(--text-primary);
-    }
+.stat-card:nth-child(1)::before { background: linear-gradient(90deg, var(--success), var(--emerald)); }
+.stat-card:nth-child(2)::before { background: linear-gradient(90deg, var(--blue), var(--accent)); }
+.stat-card:nth-child(3)::before { background: linear-gradient(90deg, var(--purple), var(--accent)); }
+.stat-card:nth-child(4)::before { background: linear-gradient(90deg, var(--orange), var(--warning)); }
 
-    .stat-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
+.stat-value {
+  font-size: 42px; /* גודל גדול ומרשים */
+  font-weight: 800;
+  margin: 12px 0 8px;
+  color: var(--text-primary);
+}
 
-    .chart-container {
-      position: relative;
-      height: 280px;
-      padding: 0;
-    }
+.stat-label {
+  font-size: 14px; /* קריא וברור */
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em; /* רווח אותיות קל */
+}
 
-    .message {
-      padding: 24px;
-      border-radius: var(--radius-lg);
-      font-weight: 500;
-      border-left: 4px solid;
-      position: relative;
-      overflow: hidden;
-    }
+.chart-container {
+  position: relative;
+  height: 280px;
+  padding: 0;
+}
 
-    .message::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(45deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
-      pointer-events: none;
-    }
+.message {
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  font-weight: 500;
+  border-right: 6px solid; /* קו צד ימין עבור RTL */
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm); /* צללית קלה להודעות */
+}
 
-    .message-success {
-      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
-      border-color: var(--success);
-      color: #166534;
-    }
+.message::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+  pointer-events: none;
+}
 
-    .message-warning {
-      background: linear-gradient(135deg, #fffbeb, #fef3c7);
-      border-color: var(--warning);
-      color: #92400e;
-    }
+/* התאמת צבעים להודעות */
+.message-success {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border-color: var(--success);
+  color: #065f46;
+}
 
-    .message-danger {
-      background: linear-gradient(135deg, #fef2f2, #fecaca);
-      border-color: var(--danger);
-      color: #991b1b;
-    }
+.message-warning {
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+  border-color: var(--warning);
+  color: #9a3412;
+}
 
-    .empty-state {
-      text-align: center;
-      padding: 64px 32px;
-      color: var(--text-secondary);
-    }
+.message-danger {
+  background: linear-gradient(135deg, #fef2f2, #fecaca);
+  border-color: var(--danger);
+  color: #991b1b;
+}
 
-    .empty-state-icon {
-      font-size: 48px;
-      margin-bottom: 16px;
-      opacity: 0.5;
-    }
+.empty-state {
+  text-align: center;
+  padding: 64px 32px;
+  color: var(--text-secondary);
+}
 
-    .data-management {
-      background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-    }
+.empty-state-icon {
+  font-size: 60px; /* אייקון גדול יותר */
+  margin-bottom: 20px;
+  opacity: 0.4;
+}
 
-    .data-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr auto;
-      gap: 12px;
-    }
+.data-management {
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 28px; /* הגדלת פאדינג */
+  box-shadow: var(--shadow-sm); /* צללית קלה */
+}
 
-    .info-box {
-      margin-top: 16px;
-      padding: 16px;
-      background: var(--bg-primary);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius);
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
+.data-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 12px;
+}
 
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+.info-box {
+  margin-top: 20px; /* מרווח גדול יותר */
+  padding: 18px; /* פאדינג גדול יותר */
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  font-size: 14px; /* גודל פונט קריא */
+  color: var(--text-secondary);
+  line-height: 1.6;
+  box-shadow: var(--shadow-sm);
+}
 
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(-20px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); } /* אנימציה בולטת יותר */
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    .animate-in {
-      animation: fadeIn 0.4s ease-out;
-    }
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-30px); } /* אנימציה בולטת יותר */
+  to { opacity: 1; transform: translateX(0); }
+}
 
-    .animate-slide {
-      animation: slideIn 0.3s ease-out;
-    }
+.animate-in {
+  animation: fadeIn 0.5s ease-out forwards; /* זמן ארוך יותר + forwards לשמירת מצב סופי */
+}
 
-    /* Mobile optimizations */
-    input, button { font-size: 16px !important; }
-    button { -webkit-tap-highlight-color: transparent; }
-    ::-webkit-scrollbar { display: none; }
+.animate-slide {
+  animation: slideIn 0.4s ease-out forwards;
+}
 
-    @media (max-width: 640px) {
-      .data-actions {
-        grid-template-columns: 1fr;
-      }
-      
-      .task-actions {
-        flex-wrap: wrap;
-      }
-      
-      .stat-card {
-        padding: 20px 16px;
-      }
-      
-      .stat-value {
-        font-size: 28px;
-      }
-      
-      .header h1 {
-        font-size: 24px;
-      }
-    }
+/* Mobile optimizations */
+input, button { font-size: 16px !important; }
+button { -webkit-tap-highlight-color: transparent; }
+::-webkit-scrollbar { display: none; }
+
+@media (max-width: 640px) {
+  .data-actions {
+    grid-template-columns: 1fr; /* כפתורים בטור במובייל */
+  }
+  
+  .task-actions {
+    flex-wrap: wrap;
+    justify-content: flex-end; /* יישור לימין במובייל */
+  }
+  
+  .status-btn {
+    width: 44px; /* מעט קטן יותר במובייל כדי לחסוך מקום */
+    height: 44px;
+    font-size: 16px;
+  }
+  
+  .stat-card {
+    padding: 24px 16px;
+  }
+  
+  .stat-value {
+    font-size: 36px;
+  }
+  
+  .header h1 {
+    font-size: 24px;
+  }
+
+  /* שיפורים ספציפיים למובייל כדי למנוע עומס */
+  .task-item {
+    flex-direction: column; /* כותרת המשימה מעל הכפתורים */
+    align-items: flex-start; /* יישור לימין */
+    padding: 16px;
+  }
+
+  .task-name {
+    margin-right: 0;
+    margin-bottom: 12px; /* רווח בין שם המשימה לכפתורים */
+    font-size: 15px;
+  }
+
+  .data-management {
+    padding: 20px;
+  }
+}
+
   </style>
 </head>
 <body>
